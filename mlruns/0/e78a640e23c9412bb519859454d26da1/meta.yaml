@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ferna/Documents/Desktop/17%20-%20Projects/07%20-%20Microsoft%20Mlops/mslearn-mlops/mlruns/0/e78a640e23c9412bb519859454d26da1/artifacts
+end_time: 1745707353592
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: e78a640e23c9412bb519859454d26da1
+run_uuid: e78a640e23c9412bb519859454d26da1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1745707348213
+status: 3
+tags: []
+user_id: ferna

@@ -5,14 +5,16 @@ import glob
 import os
 
 import pandas as pd
-
+from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 
+import mlflow
+import mlflow.sklearn
 
 # define functions
 def main(args):
     # TO DO: enable autologging
-
+    mlflow.sklearn.autolog()
 
     # read data
     df = get_csvs_df(args.training_data)
@@ -34,7 +36,13 @@ def get_csvs_df(path):
 
 
 # TO DO: add function to split data
-
+def split_data(df):
+    # split data into predictor variables and target to be predicted, and 30% of test
+    X = df[['Pregnancies','PlasmaGlucose','DiastolicBloodPressure',
+            'TricepsThickness','SerumInsulin','BMI',
+            'DiabetesPedigree','Age']].values
+    y = df['Diabetic'].values
+    return train_test_split(X, y, test_size=0.30, random_state=0)
 
 def train_model(reg_rate, X_train, X_test, y_train, y_test):
     # train model
