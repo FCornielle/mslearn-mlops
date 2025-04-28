@@ -38,7 +38,7 @@ def get_csvs_df(path):
 
 # TO DO: add function to split data
 def split_data(df):
-    # split data into predictor variables and target to be predicted, and 
+    # split data into predictor variables and target to be predicted, and
     # 30% of test
     X = df[['Pregnancies','PlasmaGlucose','DiastolicBloodPressure',
             'TricepsThickness','SerumInsulin','BMI',
