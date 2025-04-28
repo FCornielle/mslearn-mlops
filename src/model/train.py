@@ -40,9 +40,9 @@ def get_csvs_df(path):
 def split_data(df):
     # split data into predictor variables and target to be predicted, and
     # 30% of test
-    X = df[['Pregnancies','PlasmaGlucose','DiastolicBloodPressure',
-            'TricepsThickness','SerumInsulin','BMI',
-            'DiabetesPedigree','Age']].values
+    X = df[['Pregnancies', 'PlasmaGlucose', 'DiastolicBloodPressure',
+            'TricepsThickness', 'SerumInsulin', 'BMI',
+            'DiabetesPedigree', 'Age']].values
     y = df['Diabetic'].values
     return train_test_split(X, y, test_size=0.30, random_state=0)
 
