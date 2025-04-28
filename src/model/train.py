@@ -32,13 +32,14 @@ def get_csvs_df(path):
         raise RuntimeError(f"Cannot use non-existent path provided: {path}")
     csv_files = glob.glob(f"{path}/*.csv")
     if not csv_files:
-        raise RuntimeError(f"No CSV files found in provided data path: {path}")
+        raise RuntimeError(f"No CSV files found in provided data path:{path}")
     return pd.concat((pd.read_csv(f) for f in csv_files), sort=False)
 
 
 # TO DO: add function to split data
 def split_data(df):
-    # split data into predictor variables and target to be predicted, and 30% of test
+    # split data into predictor variables and target to be predicted, and 
+    # 30% of test
     X = df[['Pregnancies','PlasmaGlucose','DiastolicBloodPressure',
             'TricepsThickness','SerumInsulin','BMI',
             'DiabetesPedigree','Age']].values
