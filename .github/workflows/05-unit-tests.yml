@@ -1,5 +1,5 @@
 # .github/workflows/05-unit-tests.yml
-name: Code Checks
+name: Unit Tests
 
 on:
   pull_request:
