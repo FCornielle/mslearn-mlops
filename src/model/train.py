@@ -11,6 +11,7 @@ from sklearn.linear_model import LogisticRegression
 import mlflow
 import mlflow.sklearn
 
+
 # define functions
 def main(args):
     # TO DO: enable autologging
