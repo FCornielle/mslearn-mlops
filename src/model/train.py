@@ -1,4 +1,4 @@
-# Import libraries
+# Import libraries.
 
 import argparse
 import glob
