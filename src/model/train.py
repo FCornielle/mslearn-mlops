@@ -36,7 +36,7 @@ def get_csvs_df(path):
     return pd.concat((pd.read_csv(f) for f in csv_files), sort=False)
 
 
-# TO DO: add function to split data
+# TO DO: add function to split data into train and test sets
 def split_data(df):
     # split data into predictor variables and target to be predicted, and
     # 30% of test
