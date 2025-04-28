@@ -1,0 +1,35 @@
+# .github/workflows/05-unit-tests.yml
+name: Code Checks
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  job2:
+    name: unit testing
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v3
+
+    - name: Use Python version 3.8
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.8'
+
+    - name: Downgrade pip below 24.1
+      run: python -m pip install 'pip<24.1'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install -r requirements.txt
+
+    - name: Install pytest
+      run: |
+        python -m pip install pytest
+
+    - name: Run unit tests
+      run: |
+        pytest tests/
