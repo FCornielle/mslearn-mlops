@@ -24,8 +24,7 @@ jobs:
     - name: Create online endpoint (idempotent)
       run: |
         az ml online-endpoint create \
-          --name diabetes-endpoint \
-          --auth-mode key \
+          --file endpoint.yml \
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
         || true
@@ -34,6 +33,7 @@ jobs:
       run: |
         az ml online-deployment create \
           --file deployment.yml \
+          --endpoint-file endpoint.yml \
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
           --no-wait
