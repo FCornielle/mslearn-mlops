@@ -33,7 +33,7 @@ jobs:
       run: |
         az ml online-deployment create \
           --file deployment.yml \
-          --endpoint-file endpoint.yml \
+          --endpoint-name diabetes-endpoint \
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
           --no-wait
