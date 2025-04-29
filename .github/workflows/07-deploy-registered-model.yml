@@ -5,35 +5,36 @@ on:
 
 jobs:
   deploy:
-    name: Deploy model to online endpoint
+    
     runs-on: ubuntu-latest
     environment: production
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Azure login (Production)
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_PROD_CREDENTIALS }}
+      - name: Azure login (Production)
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_PROD_CREDENTIALS }}
 
-    - name: Install Azure ML extension
-      run: az extension add -n ml -y
+      - name: Install Azure ML extension
+        run: az extension add -n ml -y
 
-    - name: Create online endpoint (idempotent)
-      run: |
-        az ml online-endpoint create \
-          --file endpoint.yml \
-          --resource-group mslearn-prod-mlops-rg \
-          --workspace-name mslearn-prod-mlops-aml \
-        || true
+      - name: Create online endpoint (idempotent)
+        run: |
+          az ml online-endpoint create \
+            --name diabetes-endpoint \
+            --auth-mode key \
+            --resource-group mslearn-prod-mlops-rg \
+            --workspace-name mslearn-prod-mlops-aml \
+          || true
 
-    - name: Deploy latest model
-      run: |
-        az ml online-deployment create \
-          --file deployment.yml \
-          --endpoint-name diabetes-endpoint \
-          --resource-group mslearn-prod-mlops-rg \
-          --workspace-name mslearn-prod-mlops-aml \
-          --no-wait
+      - name: Deploy latest model
+        run: |
+          az ml online-deployment create \
+            --file deployment.yml \
+            --endpoint-name diabetes-endpoint \
+            --resource-group mslearn-prod-mlops-rg \
+            --workspace-name mslearn-prod-mlops-aml \
+            --all-traffic 100 \
+            --no-wait

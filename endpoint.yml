@@ -1,6 +1,4 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.schema.json
 name: diabetes-endpoint
 auth_mode: key
-description: "Real-time endpoint for diabetes model"
-tags:
-  environment: production
+
