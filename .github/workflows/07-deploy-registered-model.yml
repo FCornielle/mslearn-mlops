@@ -5,7 +5,7 @@ on:
 
 jobs:
   deploy:
-    
+
     runs-on: ubuntu-latest
     environment: production
 
@@ -23,8 +23,7 @@ jobs:
       - name: Create online endpoint (idempotent)
         run: |
           az ml online-endpoint create \
-            --name diabetes-endpoint \
-            --auth-mode key \
+            --file endpoint.yml \
             --resource-group mslearn-prod-mlops-rg \
             --workspace-name mslearn-prod-mlops-aml \
           || true
@@ -33,8 +32,6 @@ jobs:
         run: |
           az ml online-deployment create \
             --file deployment.yml \
-            --endpoint-name diabetes-endpoint \
             --resource-group mslearn-prod-mlops-rg \
             --workspace-name mslearn-prod-mlops-aml \
-            --all-traffic 100 \
             --no-wait
