@@ -4,4 +4,3 @@ endpoint_name: diabetes-endpoint
 model: diabetes_prod_model:latest
 instance_type: Standard_DS1_v2
 instance_count: 1
-traffic: 100
