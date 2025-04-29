@@ -29,7 +29,7 @@ jobs:
           az ml job create --file src/job.yml \
             --resource-group mslearn-mlops-rg \
             --workspace-name mslearn-mlops-aml \
-            --inputs training_data=azureml:diabetes-dev-folder@latest \
+            --set inputs.training_data.path=azureml:diabetes-dev-folder@latest \
             --stream
 
   production:
@@ -56,5 +56,5 @@ jobs:
           az ml job create --file src/job.yml \
             --resource-group mslearn-prod-mlops-rg \
             --workspace-name mslearn-prod-mlops-aml \
-            --inputs training_data=azureml:diabetes-prod-folder@latest \
+            --set inputs.training_data.path=azureml:diabetes-prod-folder@latest \
             --stream
