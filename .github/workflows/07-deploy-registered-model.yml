@@ -33,12 +33,7 @@ jobs:
     - name: Deploy latest model
       run: |
         az ml online-deployment create \
-          --endpoint-name diabetes-endpoint \
-          --name blue \
-          --model diabetes_prod_model:latest \
-          --instance-type Standard_DS1_v2 \
-          --instance-count 1 \
-          --traffic 100 \
+          --file deployment.yml \
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
           --no-wait
