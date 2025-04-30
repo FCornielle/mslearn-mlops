@@ -1,17 +1,13 @@
 name: Deploy production model
-
-on:
-  workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
   deploy:
-    name: Deploy model to online endpoint
     runs-on: ubuntu-latest
     environment: production
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
     - name: Azure login (Production)
       uses: azure/login@v1
@@ -21,7 +17,7 @@ jobs:
     - name: Install Azure ML extension
       run: az extension add -n ml -y
 
-    - name: Create online endpoint (idempotent)
+    - name: Create or update endpoint
       run: |
         az ml online-endpoint create \
           --file endpoint.yml \
@@ -37,5 +33,14 @@ jobs:
         az ml online-deployment create \
           --file deployment.yml \
           --resource-group mslearn-prod-mlops-rg \
+          --workspace-name mslearn-prod-mlops-aml
+
+    # (Optional) You can drop this if you're confident traffic: is in endpoint.yml,
+    # otherwise keep it to be explicit:
+    - name: Route 100% traffic
+      run: |
+        az ml online-endpoint update \
+          --name diabetes-endpoint \
+          --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
-          --no-wait
+          --traffic diabetes-deployment=100
