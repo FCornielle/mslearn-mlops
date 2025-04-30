@@ -7,7 +7,7 @@ endpoint_name: diabetes-endpoint-xyz3
 model: azureml:diabetes_prod_model:1
 
 # tell Azure ML which inference image to use
-environment: azureml:AzureML-mlflow-1.32-ubuntu18.04-py37-cpu@latest
+environment: azureml:DefaultNcdEnv-mlflow-ubuntu20-04-py38-cpu-inference@latest
 
 instance_type: Standard_D2as_v4
 instance_count: 1
