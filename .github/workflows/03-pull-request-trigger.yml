@@ -1,7 +1,7 @@
 name: Trigger on Pull Request
 
 on:
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   check:
