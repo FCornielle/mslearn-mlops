@@ -27,11 +27,8 @@ jobs:
           --file endpoint.yml \
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
-          --all-traffic \
         || true
-    - name: Print deployment file content
-      run: |
-        cat deployment.yml
+
     - name: Deploy registered model
       run: |
         az ml online-deployment create \
