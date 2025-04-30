@@ -3,12 +3,10 @@ $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.sch
 name: diabetes-deployment
 endpoint_name: diabetes-endpoint-xyz3
 
-model:
-  name: diabetes_prod_model
-  version: 1
-  type: mlflow_model
+# reference your registered MLflow model by name:version
+model: azureml:diabetes_prod_model:1
 
-# inject the curated inference environment here:
+# tell Azure ML which inference image to use
 environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
 
 instance_type: Standard_D2as_v4
