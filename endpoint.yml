@@ -1,6 +1,6 @@
 # endpoint.yml
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineEndpoint.schema.json
-name: diabetes-endpoint
+name: diabetes-endpoint-xyz
 auth_mode: key
 traffic:
   diabetes-deployment: 100
