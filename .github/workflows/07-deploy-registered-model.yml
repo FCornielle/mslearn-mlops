@@ -28,7 +28,11 @@ jobs:
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
         || true
-
+    - name: Print deployment file content
+      run: |
+        echo "--- Content of deployment.yml ---"
+        cat deployment.yml
+        echo "-----------------------------------"
     - name: Deploy registered model
       run: |
         az ml online-deployment create \
