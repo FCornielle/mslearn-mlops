@@ -3,10 +3,16 @@ $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.sch
 name: diabetes-deployment
 endpoint_name: diabetes-endpoint-xyz3
 
-# reference your registered MLflow model by name:version
-model: azureml:diabetes_prod_model:1
+model:
+  name: diabetes_prod_model
+  version: 1
+  type: mlflow_model
 
-# tell Azure ML which inference image to use
+code_configuration:
+  code: ./src
+  scoring_script: score.py
+
+# use the MLflow inference environment you looked up
 environment: azureml:DefaultNcdEnv-mlflow-ubuntu20-04-py38-cpu-inference@latest
 
 instance_type: Standard_D2as_v4
