@@ -3,9 +3,7 @@ name: CI/CD for Azure ML Environments
 # This workflow trains in dev, then (on success + approval) in prod.
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
 
 jobs:
   experiment:
