@@ -8,8 +8,12 @@ model:
   version: 1
   type: mlflow_model
 
-# inject the curated inference environment here:
-environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+code_configuration:
+  code: ./src
+  scoring_script: score.py
+
+# use the MLflow inference environment you looked up
+environment: azureml:DefaultNcdEnv-mlflow-ubuntu20-04-py38-cpu-inference@latest
 
 instance_type: Standard_D2as_v4
 instance_count: 1

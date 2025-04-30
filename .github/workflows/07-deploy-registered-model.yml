@@ -17,12 +17,13 @@ jobs:
     - name: Install Azure ML extension
       run: az extension add -n ml -y
 
-    - name: Create or update endpoint
-      run: |
-        az ml online-endpoint create \
-          --file endpoint.yml \
-          --resource-group mslearn-prod-mlops-rg \
-          --workspace-name mslearn-prod-mlops-aml \
+    # - name: Create or update endpoint
+    #   run: |
+    #     az ml online-endpoint create \
+    #       --file endpoint.yml \
+    #       --resource-group mslearn-prod-mlops-rg \
+    #       --workspace-name mslearn-prod-mlops-aml \
+
     - name: Deploy registered model
       run: |
         az ml online-deployment create \
