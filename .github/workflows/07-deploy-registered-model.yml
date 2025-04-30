@@ -28,11 +28,14 @@ jobs:
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
         || true
-
+    - name: Print deployment file content
+      run: |
+        cat deployment.yml
     - name: Deploy registered model
       run: |
         az ml online-deployment create \
           --file deployment.yml \
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
+          --allow-traffic \
           --no-wait
