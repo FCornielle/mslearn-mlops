@@ -27,6 +27,7 @@ jobs:
           --file endpoint.yml \
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
+          --all-traffic \
         || true
     - name: Print deployment file content
       run: |
@@ -37,5 +38,4 @@ jobs:
           --file deployment.yml \
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
-          --allow-traffic \
           --no-wait
