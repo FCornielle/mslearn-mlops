@@ -25,13 +25,12 @@ jobs:
           az ml online-endpoint create \
             --file endpoint.yml \
             --resource-group mslearn-prod-mlops-rg \
-            --workspace-name mslearn-prod-mlops-aml \
-          || true
+            --workspace-name mslearn-prod-mlops-aml
 
       - name: Deploy latest model
         run: |
           az ml online-deployment create \
-            --file deployment.yml \
+            --f deployment.yml \
             --resource-group mslearn-prod-mlops-rg \
             --workspace-name mslearn-prod-mlops-aml \
-            --no-wait
+            --all-traffic
