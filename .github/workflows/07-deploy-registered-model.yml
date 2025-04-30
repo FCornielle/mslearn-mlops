@@ -40,7 +40,7 @@ jobs:
     - name: Route 100% traffic
       run: |
         az ml online-endpoint update \
-          --name diabetes-endpoint-xyz \
+          --name diabetes-endpoint-xyz3 \
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
           --traffic diabetes-deployment=100
