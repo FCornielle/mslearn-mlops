@@ -23,24 +23,9 @@ jobs:
           --file endpoint.yml \
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
-        || az ml online-endpoint update \
-          --file endpoint.yml \
-          --resource-group mslearn-prod-mlops-rg \
-          --workspace-name mslearn-prod-mlops-aml
-
     - name: Deploy registered model
       run: |
         az ml online-deployment create \
           --file deployment.yml \
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml
-
-    # (Optional) You can drop this if you're confident traffic: is in endpoint.yml,
-    # otherwise keep it to be explicit:
-    - name: Route 100% traffic
-      run: |
-        az ml online-endpoint update \
-          --name diabetes-endpoint-xyz3 \
-          --resource-group mslearn-prod-mlops-rg \
-          --workspace-name mslearn-prod-mlops-aml \
-          --traffic diabetes-deployment=100
