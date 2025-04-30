@@ -35,5 +35,4 @@ jobs:
           --file deployment.yml \
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
-          --all-traffic \
           --no-wait
