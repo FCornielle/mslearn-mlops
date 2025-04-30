@@ -8,7 +8,8 @@ model:
   version: 1
   type: mlflow_model
 
-environment: azureml:AzureML-mlflow-1.18-ubuntu20.04-py38:1
+# inject the curated inference environment here:
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
 
 instance_type: Standard_D2as_v4
 instance_count: 1
