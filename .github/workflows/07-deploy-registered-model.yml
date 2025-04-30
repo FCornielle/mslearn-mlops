@@ -23,10 +23,6 @@ jobs:
           --file endpoint.yml \
           --resource-group mslearn-prod-mlops-rg \
           --workspace-name mslearn-prod-mlops-aml \
-        || az ml online-endpoint update \
-          --file endpoint.yml \
-          --resource-group mslearn-prod-mlops-rg \
-          --workspace-name mslearn-prod-mlops-aml
 
     - name: Deploy registered model
       run: |
