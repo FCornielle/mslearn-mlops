@@ -8,9 +8,8 @@ model:
   version: 1
   type: mlflow_model
 
-environment:
-  name: mlflow-model-inference
-  version: 2
+# ← use the curated MLflow inference image:
+environment: azureml:mlflow-model-inference@2
 
 instance_type: Standard_D2as_v4
 instance_count: 1
