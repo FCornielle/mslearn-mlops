@@ -8,8 +8,8 @@ model:
   version: 1
   type: mlflow_model
 
-# ← use the curated MLflow inference image:
-environment: azureml:mlflow-model-inference@2
+# ← change this to one of your curated names + version:
+environment: azureml:mlflow-py312-inference@10
 
 instance_type: Standard_D2as_v4
 instance_count: 1
