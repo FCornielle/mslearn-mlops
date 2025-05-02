@@ -24,10 +24,17 @@ jobs:
     #       --resource-group mslearn-prod-mlops-rg \
     #       --workspace-name mslearn-prod-mlops-aml \
 
+    # - name: Create envrionment
+    #   run: |
+        # az ml environment create \
+        #   --file environment.yml \
+        #   --resource-group mslearn-prod-mlops-rg \
+        #   --workspace-name mslearn-prod-mlops-aml
+
+
     - name: Deploy registered model
       run: |
         az ml online-deployment create \
           --file deployment.yml \
           --resource-group mslearn-prod-mlops-rg \
-          --workspace-name mslearn-prod-mlops-aml \
-          --debug
+          --workspace-name mslearn-prod-mlops-aml

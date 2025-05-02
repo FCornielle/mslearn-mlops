@@ -1,15 +1,14 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
 
-name: diabetes-deployment
+name: realtime-deployment
 endpoint_name: diabetes-endpoint-xyz3
 
-model:
-  name: diabetes_prod_model
-  version: 1
-  type: mlflow_model
+model:       azureml:diabetes_prod_model_2:1
+environment: azureml:diabetes-infer-env:9
 
-# ← change this to one of your curated names + version:
-environment: azureml:mlflow-py312-inference@10
+instance_type:   Standard_DS2_v2
+instance_count:  1
 
-instance_type: Standard_D2as_v4
-instance_count: 1
+environment_variables:
+  # this must match the "artifact_path" in your MLmodel (here: model/)
+  MLFLOW_MODEL_FOLDER: "model"
