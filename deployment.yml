@@ -8,12 +8,8 @@ model:
   version: 1
   type: mlflow_model
 
-code_configuration:
-  code: ./src
-  scoring_script: score.py
-
-# use the MLflow inference environment you looked up
-environment: azureml:DefaultNcdEnv-mlflow-ubuntu20-04-py38-cpu-inference@latest
+# ← change this to one of your curated names + version:
+environment: azureml:mlflow-py312-inference@10
 
 instance_type: Standard_D2as_v4
 instance_count: 1
