@@ -1,0 +1,14 @@
+# environment.yml
+$schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
+name: diabetes-infer-env
+version: 9 # Using version 9
+
+# Use the curated MLflow inference base image compatible with Python 3.7
+image: mcr.microsoft.com/azureml/minimal-ubuntu18.04-py37-cpu-inference:latest # <--- Use the image you found
+
+# Correct way to reference the conda file
+conda_file: conda_inference.yml # <--- Change this line
+
+# If your conda_inference.yml is not in the same directory, you might need build.path
+# build:
+#   path: .
